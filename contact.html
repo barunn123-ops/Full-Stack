@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact - Nepali Babu</title>
+  <meta name="description" content="Get in touch with Nepali Babu, or send a request to book the private table.">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🥖</text></svg>">
+</head>
+<body>
+
+  <!--  NAV -->
+  <nav class="mn-nav">
+    <div class="wrap">
+      <a href="index.html" class="mn-brand">Nepali <span>Babu</span></a>
+      <button class="navbar-toggler-custom" aria-label="Toggle navigation" aria-expanded="false">Menu</button>
+      <div class="mn-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="contact.html" class="mn-cta">Reserve a Table</a>
+      </div>
+    </div>
+  </nav>
+
+  <!--  PAGE HEADER  -->
+  <header style="padding-top: 11rem; padding-bottom: 3rem;">
+    <div class="wrap">
+      <span class="eyebrow">Get in touch</span>
+      <h1>Come by, call,<br>or write ahead.</h1>
+      <p class="lede mt-4">For the private table, tell us roughly when and how many we'll confirm by phone within a day.</p>
+    </div>
+  </header>
+
+  <hr class="hairline">
+
+  <!--  CONTACT GRID  -->
+  <section>
+    <div class="wrap">
+      <div class="row g-5">
+
+        <!-- Form -->
+        <div class="col-lg-7">
+          <form id="contactForm" novalidate>
+            <div class="row g-4">
+              <div class="col-md-6 mn-field">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" placeholder="Your full name">
+              </div>
+              <div class="col-md-6 mn-field">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="you@example.com">
+              </div>
+              <div class="col-md-6 mn-field">
+                <label for="phone">Phone (optional)</label>
+                <input type="tel" id="phone" name="phone" placeholder="98XXXXXXXX">
+              </div>
+              <div class="col-md-6 mn-field">
+                <label for="reason">Reason for writing</label>
+                <select id="reason" name="reason">
+                  <option>General question</option>
+                  <option>Book the private table</option>
+                  <option>Catering or large order</option>
+                  <option>Something else</option>
+                </select>
+              </div>
+              <div class="col-12 mn-field">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" rows="5" placeholder="Tell us what you need — dates, headcount, or just a question."></textarea>
+              </div>
+              <div class="col-12">
+                <button type="submit" class="btn-solid" style="border:none;">Send Message</button>
+                <div id="formStatus" class="form-status" role="status" aria-live="polite"></div>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <!-- Details -->
+        <div class="col-lg-5">
+          <div><div class="mn-card mb-4">
+            <span class="eyebrow">Visit</span>
+            <p class="mb-1" style="color: var(--flour);">Pulchowk Road<br>Bharatpur, Bagmati Province, Nepal</p>
+            <p class="mb-0">Tuesday – Sunday, 7am – 6pm<br>Closed Mondays</p>
+            <div>
+              <br>
+            <span class="eyebrow">Reach us directly</span>
+            <p class="mb-1" style="color: var(--flour);">+977 9812345670</p>
+            <p class="mb-0">nepalibabu1official@gmail.com</p>
+            </div>
+          </div>
+        
+          <div class="mn-card">
+            <span class="eyebrow">Private table requests</span>
+            <p class="mb-0">Two-hour blocks, mornings or evenings. We confirm by phone, usually within a day.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <hr class="hairline">
+
+  <!--  MAP PLACEHOLDER  -->
+  <section class="tight">
+    <div class="wrap">
+      <span class="eyebrow">Find us</span>
+      <h2 class="mb-4">Two minutes off Pulchowk Road.</h2>
+      <div class="mn-photo panorama">
+        <img src="https://images.unsplash.com/photo-1713148312902-bd3105e11b2a?fm=jpg&amp;q=80&amp;w=1600&amp;auto=format&amp;fit=crop" alt="A small coffee shop storefront with outdoor tables and chairs on the street.">
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER  -->
+  <footer class="mn-footer">
+    <div class="wrap">
+      <div class="mn-footer-grid">
+        <div>
+          <div class="mn-brand mb-3">Nepali <span>Babu</span></div>
+          <p style="max-width: 32ch;">A slow bakery and coffee bar in Bharatpur. Bread from 4am, coffee all day, closed Mondays.</p>
+        </div>
+        <div>
+          <span class="eyebrow">Visit</span>
+          <p class="mb-1">Pulchowk Road<br>Bharatpur, Bagmati Province</p>
+          <p>Tue–Sun, 7am–6pm</p>
+        </div>
+        <div>
+          <span class="eyebrow">Find us</span>
+          <p class="mb-1"><a href="contact.html">Contact &amp; directions</a></p>
+          <p class="mb-1"><a href="services.html">Menu &amp; services</a></p>
+          <p><a href="about.html">Our story</a></p>
+        </div>
+      </div>
+      <div class="fine">© <span id="year"></span> Nepali Babu Bakery &amp; Coffee. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

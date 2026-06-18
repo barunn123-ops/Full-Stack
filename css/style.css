@@ -1,0 +1,519 @@
+/* ============================================================
+   MAISON NOIR — core stylesheet
+   A dark, slow-bakery aesthetic. Espresso black, flour white,
+   toasted-crust amber. The vertical rule down the page stands
+   in for the chalkboard rail above a bakery counter.
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,450;0,9..144,600;1,9..144,450&family=Inter:wght@400;500;600&display=swap');
+
+:root {
+  --ink: #0e0d0c;
+  --ink-soft: #15130f;
+  --cocoa: #3e3a33;
+  --flour: #f2ede4;
+  --flour-dim: #cfc8b8;
+  --crust: #9c6b3f;
+  --gold: #c9a876;
+
+  --display: 'Fraunces', Georgia, serif;
+  --body: 'Inter', -apple-system, sans-serif;
+
+  --rule: rgba(201, 168, 118, 0.35);
+  --container: 1180px;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: var(--ink);
+  color: var(--flour);
+  font-family: var(--body);
+  font-weight: 400;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; text-decoration: none; }
+
+/* ---------- Type scale ---------- */
+
+h1, h2, h3, .display {
+  font-family: var(--display);
+  font-weight: 450;
+  letter-spacing: -0.01em;
+  margin: 0;
+  color: var(--flour);
+}
+
+.eyebrow {
+  font-family: var(--body);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+  display: inline-block;
+  margin-bottom: 1rem;
+}
+
+h1 { font-size: clamp(2.6rem, 6vw, 5rem); line-height: 1.02; }
+h2 { font-size: clamp(2rem, 4vw, 3rem); line-height: 1.08; }
+h3 { font-size: clamp(1.3rem, 2.2vw, 1.7rem); line-height: 1.2; }
+
+p { color: var(--flour-dim); }
+
+.lede {
+  font-size: 1.15rem;
+  color: var(--flour-dim);
+  max-width: 38ch;
+}
+
+/* ---------- Layout shell ---------- */
+
+.wrap {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+section { padding: 6.5rem 0; position: relative; }
+section.tight { padding: 4rem 0; }
+
+.hairline {
+  border: none;
+  border-top: 1px solid var(--rule);
+  margin: 0;
+}
+
+/* ---------- Nav ---------- */
+
+.mn-nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  background: rgba(14, 13, 12, 0.86);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--rule);
+}
+
+.mn-nav .wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 78px;
+}
+
+.mn-brand {
+  font-family: var(--display);
+  font-size: 1.35rem;
+  letter-spacing: 0.02em;
+  color: var(--flour);
+}
+
+.mn-brand span { color: var(--crust); }
+
+.mn-links { display: flex; gap: 2.2rem; align-items: center; }
+
+.mn-links a {
+  font-size: 0.82rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--flour-dim);
+  font-weight: 500;
+  position: relative;
+  padding-bottom: 4px;
+  transition: color 0.25s ease;
+}
+
+.mn-links a:hover, .mn-links a.active { color: var(--flour); }
+
+.mn-links a.active::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 1px;
+  background: var(--crust);
+}
+
+.mn-cta {
+  background: var(--flour);
+  color: var(--ink) !important;
+  padding: 0.6rem 1.3rem;
+  border-radius: 2px;
+  font-size: 0.78rem !important;
+  letter-spacing: 0.08em;
+  font-weight: 600 !important;
+  transition: background 0.25s ease, transform 0.2s ease;
+}
+
+.mn-cta:hover { background: var(--gold); transform: translateY(-1px); }
+
+.navbar-toggler-custom {
+  display: none;
+  background: none;
+  border: 1px solid var(--rule);
+  color: var(--flour);
+  padding: 0.4rem 0.7rem;
+  border-radius: 2px;
+}
+
+@media (max-width: 860px) {
+  .mn-links {
+    position: fixed;
+    top: 78px; left: 0; right: 0;
+    flex-direction: column;
+    align-items: flex-start;
+    background: var(--ink-soft);
+    border-bottom: 1px solid var(--rule);
+    padding: 1.5rem;
+    gap: 1.2rem;
+    transform: translateY(-110%);
+    transition: transform 0.3s ease;
+  }
+  .mn-links.open { transform: translateY(0); }
+  .navbar-toggler-custom { display: inline-flex; }
+}
+
+/* ---------- The rail (signature element) ---------- */
+/* A vertical hairline running through the page, with small
+   pinned "tickets" of info — the chalkboard rail over a
+   bakery counter, translated into layout structure.        */
+
+.rail-section {
+  display: grid;
+  grid-template-columns: 1px 1fr;
+  gap: 0;
+}
+
+.rail-line {
+  position: relative;
+  background: var(--rule);
+  width: 1px;
+}
+
+.rail-ticket {
+  position: relative;
+  padding-left: 2.4rem;
+}
+
+.rail-ticket::before {
+  content: '';
+  position: absolute;
+  left: -5px;
+  top: 0.4rem;
+  width: 9px; height: 9px;
+  border-radius: 50%;
+  background: var(--crust);
+}
+
+@media (max-width: 760px) {
+  .rail-section { grid-template-columns: 1fr; }
+  .rail-line { display: none; }
+  .rail-ticket { padding-left: 0; }
+  .rail-ticket::before { display: none; }
+}
+
+/* ---------- Buttons ---------- */
+
+.btn-noir {
+  display: inline-block;
+  background: transparent;
+  border: 1px solid var(--rule);
+  color: var(--flour);
+  padding: 0.85rem 1.8rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 500;
+  border-radius: 2px;
+  transition: border-color 0.25s ease, background 0.25s ease;
+}
+
+.btn-noir:hover { border-color: var(--gold); background: rgba(201,168,118,0.06); }
+
+.btn-solid {
+  display: inline-block;
+  background: var(--crust);
+  color: var(--ink);
+  padding: 0.85rem 1.8rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 600;
+  border-radius: 2px;
+  transition: background 0.25s ease, transform 0.2s ease;
+  border: none;
+}
+
+.btn-solid:hover { background: var(--gold); transform: translateY(-1px); }
+
+/* ---------- Cards ---------- */
+
+.mn-card {
+  background: var(--ink-soft);
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  padding: 2.2rem;
+  height: 100%;
+}
+
+.mn-card .num {
+  font-family: var(--display);
+  font-size: 0.85rem;
+  color: var(--crust);
+  letter-spacing: 0.05em;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+/* ---------- Texture blocks (CSS-only, stand in for photography) ---------- */
+
+.crumb-block {
+  aspect-ratio: 4/5;
+  border-radius: 3px;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(160deg, #2b231a 0%, #4a3520 45%, #1c1611 100%);
+}
+
+.crumb-block::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 20% 30%, rgba(242,237,228,0.05) 0, transparent 4%),
+    radial-gradient(circle at 70% 60%, rgba(242,237,228,0.04) 0, transparent 5%),
+    radial-gradient(circle at 45% 80%, rgba(242,237,228,0.05) 0, transparent 3%),
+    radial-gradient(circle at 85% 15%, rgba(242,237,228,0.04) 0, transparent 4%),
+    radial-gradient(circle at 10% 75%, rgba(242,237,228,0.05) 0, transparent 3%);
+}
+
+.crumb-block.wide { aspect-ratio: 16/10; }
+
+/* ---------- Photography ---------- */
+/* Real photos, sized and treated the same way the CSS crumb-blocks
+   were: rounded corners, consistent aspect ratio, a slight warm
+   overlay so every photo reads as part of the same dark palette. */
+
+.mn-photo {
+  position: relative;
+  aspect-ratio: 4/5;
+  border-radius: 3px;
+  overflow: hidden;
+  background: var(--ink-soft);
+}
+
+.mn-photo.wide { aspect-ratio: 16/10; }
+.mn-photo.panorama { aspect-ratio: 21/8; }
+
+.mn-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: saturate(0.92) brightness(0.94);
+}
+
+.mn-photo::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(14,13,12,0) 55%, rgba(14,13,12,0.45) 100%);
+  pointer-events: none;
+}
+
+/* ---------- Footer ---------- */
+
+.mn-footer {
+  border-top: 1px solid var(--rule);
+  padding: 3.5rem 0 2rem;
+}
+
+.mn-footer .eyebrow { margin-bottom: 0.6rem; }
+
+.mn-footer-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  gap: 2.5rem;
+}
+
+@media (max-width: 760px) {
+  .mn-footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+}
+
+.mn-footer a { color: var(--flour-dim); font-size: 0.92rem; }
+.mn-footer a:hover { color: var(--gold); }
+
+.fine {
+  font-size: 0.78rem;
+  color: var(--cocoa);
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--rule);
+}
+
+/* ---------- Reveal-on-scroll ---------- */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.in { opacity: 1; transform: translateY(0); }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+  html { scroll-behavior: auto; }
+}
+
+/* ---------- Focus visibility ---------- */
+
+a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+
+/* ---------- Forms ---------- */
+
+.mn-field label {
+  font-size: 0.78rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--flour-dim);
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.mn-field input, .mn-field textarea, .mn-field select {
+  width: 100%;
+  background: var(--ink-soft);
+  border: 1px solid var(--rule);
+  color: var(--flour);
+  padding: 0.8rem 1rem;
+  border-radius: 2px;
+  font-family: var(--body);
+  font-size: 0.95rem;
+}
+
+.mn-field input::placeholder, .mn-field textarea::placeholder { color: var(--cocoa); }
+
+.mn-field input:focus, .mn-field textarea:focus, .mn-field select:focus {
+  outline: none;
+  border-color: var(--gold);
+}
+
+.form-status {
+  font-size: 0.85rem;
+  margin-top: 1rem;
+  display: none;
+}
+
+.form-status.show { display: block; }
+
+.form-status.ok { color: #a9c79a; }
+.form-status.err { color: #c98a6b; }
+
+/* ---------- Interactive Hover Effects ---------- */
+
+/* Cards */
+.mn-card {
+  background: var(--ink-soft);
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  padding: 2.2rem;
+  height: 100%;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.mn-card:hover {
+  transform: scale(1.04);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+/* Menu Items */
+.col-lg-9 > .d-flex {
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.col-lg-9 > .d-flex:hover {
+  transform: translateX(12px);
+}
+
+/* Buttons */
+.btn-solid,
+.btn-noir,
+.mn-cta,
+.navbar-toggler-custom {
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    background 0.3s ease,
+    border-color 0.3s ease,
+    color 0.3s ease;
+}
+
+.btn-solid:hover,
+.btn-noir:hover,
+.mn-cta:hover,
+.navbar-toggler-custom:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 25px rgba(255, 102, 0, 0.25);
+}
+
+/* Navigation Links */
+.mn-links a {
+  transition:
+    color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.mn-links a:hover {
+  transform: scale(1.05);
+}
+
+/* Footer Links */
+.mn-footer a {
+  color: var(--flour-dim);
+  font-size: 0.92rem;
+  transition:
+    color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.mn-footer a:hover {
+  color: var(--gold);
+  transform: scale(1.03);
+}
+
+/* Photos */
+.mn-photo {
+  position: relative;
+  aspect-ratio: 4/5;
+  border-radius: 3px;
+  overflow: hidden;
+  background: var(--ink-soft);
+  transition: transform 0.4s ease;
+}
+
+.mn-photo:hover {
+  transform: scale(1.03);
+}
+
+.mn-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: saturate(0.92) brightness(0.94);
+  transition: transform 0.5s ease;
+}
+
+.mn-photo:hover img {
+  transform: scale(1.08);
+}
